@@ -3,6 +3,9 @@
 import app from '../app';
 import * as http from 'http';
 import debugLib from 'debug';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const debug = debugLib('product-api:server');
 
