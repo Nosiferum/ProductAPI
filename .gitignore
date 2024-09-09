@@ -14,6 +14,12 @@ build/
 # Operating System files
 .DS_Store
 
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
 # Logs
 logs
 *.log
