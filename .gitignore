@@ -7,6 +7,13 @@
 
 .vscode/*
 
+# Compiled output
+dist/
+build/
+
+# Operating System files
+.DS_Store
+
 # Logs
 logs
 *.log
