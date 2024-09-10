@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import logger from 'morgan';
-import indexRouter from './routes';
+import indexRouter from './routes/index';
+import productRouter from './routes/products';
 
 const app = express();
 
@@ -9,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
+app.use('/products', productRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     res.status(404).send('Not Found');
@@ -20,6 +22,3 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 });
 
 export default app;
-
-
-
