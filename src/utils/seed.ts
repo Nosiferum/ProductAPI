@@ -1,5 +1,5 @@
-import Product from "../src/models/product";
-import connectToMongoDB from "../src/config/mongoDB";
+import Product from "../models/product";
+import connectToMongoDB from "../config/mongoDB";
 
 const seedProducts = [
     {
