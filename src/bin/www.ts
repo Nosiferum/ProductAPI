@@ -4,6 +4,7 @@ import app from '../app';
 import * as http from 'http';
 import debugLib from 'debug';
 import dotenv from 'dotenv';
+import connectToMongoDB from "../config/mongoDB";
 
 dotenv.config();
 
@@ -11,6 +12,8 @@ const debug = debugLib('product-api:server');
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+
+connectToMongoDB();
 
 const server = http.createServer(app);
 
