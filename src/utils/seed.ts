@@ -26,13 +26,13 @@ const seedProducts = [
 
 async function connectAndSeed() {
     await connectToMongoDB();
-     await Product.insertMany(seedProducts)
-         .then(result => {
-             console.log(result);
-         })
-         .catch(err => {
-             console.log(err)
-         })
+    await Product.insertMany(seedProducts)
+        .then(result => {
+            console.log(result);
+        })
+        .catch(err => {
+            console.log(err)
+        })
 }
 
 connectAndSeed();

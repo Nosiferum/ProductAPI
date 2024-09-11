@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, {Request, Response, NextFunction} from 'express';
 import logger from 'morgan';
 import indexRouter from './routes/index';
 import productRouter from './routes/products';
@@ -7,7 +7,7 @@ const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 
 app.use('/', indexRouter);
 app.use('/products', productRouter);
@@ -18,7 +18,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     res.status(err.status || 500);
-    res.json({ error: err.message });
+    res.json({error: err.message});
 });
 
 export default app;
