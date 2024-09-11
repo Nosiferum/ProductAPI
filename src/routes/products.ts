@@ -40,6 +40,11 @@ router.post("/", wrapAsync(async (req: express.Request, res: express.Response) =
 
 router.put("/:id", wrapAsync(async (req: express.Request, res: express.Response) => {
     const {id} = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        res.status(400).json({error: "Invalid Product ID"});
+        return;
+    }
     const foundProduct = await Product.findByIdAndUpdate(id, req.body, {new: true, runValidators: true});
 
     if (!foundProduct) {
@@ -56,7 +61,6 @@ router.delete("/:id", wrapAsync(async (req: express.Request, res: express.Respon
         res.status(400).json({error: "Invalid Product ID"});
         return;
     }
-
     const deletedProduct = await Product.findByIdAndDelete(id);
 
     if (!deletedProduct) {
