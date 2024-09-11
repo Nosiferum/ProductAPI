@@ -32,9 +32,7 @@ router.get("/:id", wrapAsync(async (req: express.Request, res: express.Response)
 }))
 
 router.post("/", wrapAsync(async (req: express.Request, res: express.Response) => {
-    const newProduct = new Product(req.body);
-    await newProduct.save();
-
+    await Product.create(req.body);
     res.status(201).send('Product Added Successfully');
 }))
 
