@@ -5,6 +5,7 @@ import * as http from 'http';
 import debugLib from 'debug';
 import dotenv from 'dotenv';
 import connectToMongoDB from "../config/mongoDB";
+import {connectToRedis} from "../config/redisClient";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 connectToMongoDB();
+connectToRedis();
 
 const server = http.createServer(app);
 
