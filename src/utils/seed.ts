@@ -35,6 +35,8 @@ async function connectAndSeed() {
                 console.log(err)
             })
     }
+
+    process.exit(0);
 }
 
 connectAndSeed();
