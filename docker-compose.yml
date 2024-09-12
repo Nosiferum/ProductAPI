@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: product-api
+    image: product-api:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - redis
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/productAPI
+      - REDIS_URL=redis://redis:6379
+      - PORT=3000
+    volumes:
+      - .:/usr/src/app
+    entrypoint: ["/usr/src/app/entrypoint.sh"]
+    networks:
+      - product-api-network
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - product-api-network
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - product-api-network
+
+volumes:
+  mongo_data:
+
+networks:
+  product-api-network:
+    driver: bridge
+
+name: product-microservice
