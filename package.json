@@ -5,7 +5,8 @@
   "scripts": {
     "start": "ts-node src/bin/www.ts",
     "build": "tsc",
-    "dev": "nodemon src/bin/www.ts"
+    "dev": "nodemon src/bin/www.ts",
+    "seed": "ts-node src/utils/seed.ts"
   },
   "dependencies": {
     "debug": "4.3.5",
